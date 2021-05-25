@@ -1,7 +1,7 @@
 import React from "react";
 import {Card} from 'react-bootstrap';
 import {Person} from '@material-ui/icons';
-import Users from './Users.json';
+import Users from '../Users.json';
 import './CardSection.css';
 
 // class CardSection extends Component {

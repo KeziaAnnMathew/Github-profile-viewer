@@ -1,6 +1,6 @@
 import CardSection from './CardSection.js';
 import { useState} from "react";
-import Logo from './github_logo.png'
+import Logo from '../github_logo.png'
 import { Search, Close} from '@material-ui/icons';
 import './SearchPage.css'
 
