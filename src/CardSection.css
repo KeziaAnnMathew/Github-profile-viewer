@@ -1,0 +1,39 @@
+
+.card-container{
+    margin:20px;
+    background-color: aquamarine;
+    padding-top: 3%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card{
+    text-align: left;
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 20px;
+    box-shadow: 1px 2px rgb(182, 182, 182);
+}
+.card-body{
+    padding-top: 5px;
+    display: flex;
+}
+.user-img{
+    background-color: rgb(33, 179, 236);
+    width:50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 50%;
+}
+.person-icon{
+    padding: 8px;
+    color: white;
+    transform: scale(1.5);
+}
+.user-details{
+    padding-left: 10px;
+}
+.text{
+    color:grey;
+    line-height: normal;
+}
