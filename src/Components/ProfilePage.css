@@ -1,0 +1,91 @@
+.profile-container{
+    margin:20px 20px 0 20px;
+}
+.header-section{
+    background-color: rgb(243, 243, 243);
+    padding:10px 80px 0 80px ;
+    color: rgb(136, 136, 136);
+    font-weight: 500;
+}
+.header-section h5{
+    line-height: 13pt;
+}
+.credentials{
+    display: flex;
+    margin-top:40px;
+}
+.credentials img{
+    height: 70px;
+    border-radius: 10%;
+    border:2px solid rgb(136, 136, 136);
+}
+.user-details{
+    margin-top: 2px;
+}
+.bio-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:20px 80px 0 80px ;
+}
+.details{
+    font-weight: 500;
+
+}
+.small-heading{
+    color: rgb(136, 136, 136);
+    font-weight: 500;
+}
+.num-data{
+    display: flex;
+    align-items: center;
+}
+.num-data .details{
+    width:50%
+}
+.repo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+.card{
+    text-align: left;
+    margin-top: 5px;
+    /* box-shadow: 1px 2px rgb(182, 182, 182); */
+}
+.card-title{
+    /* padding-top: 5px; */
+    margin:0 !important;
+    line-height: 5pt;
+}
+.card-body{
+    padding: 5px !important;
+    display: flex;
+}
+.user-img{
+    background-color: rgb(33, 179, 236);
+    width:40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.repo-person-icon{
+    margin:0;
+    padding: 5px;
+    color: white;
+    /* transform: scale(1.5); */
+}
+.user-details{
+    padding-left: 20px;
+}
+.text{
+    color:grey;
+    line-height: normal;
+    /* display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden; */
+}

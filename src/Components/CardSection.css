@@ -13,6 +13,9 @@
     margin-bottom: 20px;
     box-shadow: 1px 2px rgb(182, 182, 182);
 }
+.card:hover{
+    box-shadow: 2px 4px rgb(182, 182, 182);
+}
 .card-body{
     padding-top: 5px;
     display: flex;
