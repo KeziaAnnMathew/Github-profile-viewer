@@ -69,7 +69,7 @@ function ProfilePage({ match }){
                         <span className="small-heading">Pinned Repositories</span><br />
                         <div className="repo">
                             {repos.map((repo,i)=>(
-                                <Card style={{ width: '30rem', height: '4rem' }} key={i}>
+                                <Card key={i}>
                                 <Card.Body>
                                     <div className="user-img">
                                         <p className="repo-person-icon"><Person /></p>
