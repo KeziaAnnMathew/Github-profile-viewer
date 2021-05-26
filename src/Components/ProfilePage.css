@@ -79,6 +79,7 @@
     /* transform: scale(1.5); */
 }
 .user-details{
+    position: inherit;
     padding-left: 20px;
 }
 .text{
