@@ -1,39 +1,16 @@
 import React from "react";
 import {Card} from 'react-bootstrap';
-import { useState} from "react";
 import { Link } from 'react-router-dom';
-import InfiniteScroll from "react-infinite-scroll-component";
 import {Person} from '@material-ui/icons';
 import Users from '../Users.json';
 import './CardSection.css';
 
 // class CardSection extends Component {
-    const CardSection= (props) => {
-        const [items,setItems] = useState(Users.users.slice(0,10));
-        const [hasMore,setHasMore] =  useState(true);
-        const fetchMoreData = () => {
-            if (items.length >= 20) {
-              setHasMore(false);
-              return;
-            }
-            setTimeout(() => {
-                setItems(Users.users)
-                console.log({items})
-              }, 2000);
-        };
-          
+    const CardSection= (props) => {          
         return(
             <React.Fragment>
-                <InfiniteScroll
-                    dataLength={items.length}
-                    next={fetchMoreData}
-                    hasMore={hasMore}
-                    loader={<h5>Loading documents...</h5>}
-                    height={400}
-                >
-
                     <div className="card-container">
-                        {items.filter((val)=>{
+                        {Users.users.filter((val)=>{
                             if(props.term === ""){
                                 return val;
                             }
@@ -60,8 +37,6 @@ import './CardSection.css';
                         ))}                               
                     </div>
 
-
-                </InfiniteScroll>
             </React.Fragment>
         )
     
