@@ -28,7 +28,7 @@ import './CardSection.css';
                     dataLength={items.length}
                     next={fetchMoreData}
                     hasMore={hasMore}
-                    loader={<h4>Loading...</h4>}
+                    loader={<h5>Loading documents...</h5>}
                     height={400}
                 >
 
