@@ -3,18 +3,19 @@ import {Card} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import {Person,Reply} from '@material-ui/icons';
 import ProfileLogo from '../profile_logo1.jpg';
-
 import Users from '../Users.json';
 import './ProfilePage.css';
 
 function ProfilePage({ match }){
+    const [item, setItem] = useState('');
+    const [repos, setRepos] = useState([]);
+
     useEffect(()=>{
         fetchItem();
 
     });
 
-    const [item, setItem] = useState('');
-    const [repos, setRepos] = useState([]);
+   
 
     const fetchItem =() => {
             Users.users.find((val)=>{
@@ -24,6 +25,7 @@ function ProfilePage({ match }){
                     const repos = val.pinnedRepo;
                     setRepos(repos)
                 }
+                return null;
             })
     }
 
