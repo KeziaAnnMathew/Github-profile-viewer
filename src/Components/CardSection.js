@@ -17,7 +17,9 @@ import './CardSection.css';
               return;
             }
             setTimeout(() => {
-                setItems(Users.users)
+                setItems(prevItems=>{
+                    return [...new Set([...prevItems, ...Users.users.slice(10,20).map(el=>el)])]
+                })
                 console.log({items})
               }, 2000);
         };
@@ -39,6 +41,7 @@ import './CardSection.css';
                             }
                             else if(val.userName.toLowerCase().includes(props.term.toLowerCase())){
                                 return val;
+                                
                             }
                         }).map((item)=>(
                         <Card className="card" style={{ width: '19rem', height:'9rem' }} key={item.id}>
