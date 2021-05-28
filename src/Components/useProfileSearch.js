@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect,useState} from "react";
 import axios from 'axios';
-export default function useProfileSearch(query,pageNumber) {
+export default function useProfileSearch(query,pageNumber,sinceVal) {
     const [loading,setLoading] = useState(true);
     const [error,setError] = useState(false);
     const [hasMore,setHasMore] = useState(false);
@@ -19,13 +19,12 @@ export default function useProfileSearch(query,pageNumber) {
             axios({
                 method:'GET',
                 url:"https://api.github.com/users",
-                params:{page:pageNumber},
+                params:{since:sinceVal},
                 cancelToken: new axios.CancelToken(c=> cancel = c)
             }).then(res=>{
                 setUsersList(prevList =>{
                     return [...new Set([...prevList,...res.data.map(el=>el)])]
                })
-               console.log(res.data)
                setHasMore(res.data.length > 0)
                setLoading(false);
             }).catch(e =>{
@@ -40,10 +39,10 @@ export default function useProfileSearch(query,pageNumber) {
                 params:{q:query,page:pageNumber},
                 cancelToken: new axios.CancelToken(c=> cancel = c)
             }).then(res=>{
+                console.log(res.data.items)
                 setUsersList(prevList =>{
                     return [...new Set([...prevList,...res.data.items.map(el=>el)])]
                })
-               console.log(res.data.items)
                setHasMore(res.data.items.length > 0)
                setLoading(false);
             }).catch(e =>{

@@ -21,22 +21,22 @@
     display: flex;
 }
 .user-img{
-    background-color: rgb(33, 179, 236);
-    width:60px;
+    /* background-color: rgb(33, 179, 236); */
+    /* width:60px;
     height: 50px;
     text-align: center;
-    border-radius: 50%;
+    border-radius: 50%; */
 }
-.person-icon{
-    margin:0;
-    padding: 8px;
-    color: white;
-    transform: scale(1.5);
+.user-image img{
+    width:60px;
+    height: 60px;
+    padding:5px;
+    border-radius: 50%;
 }
 .user-details{
     padding-left: 10px;
 }
-.text{
+.textdet{
     color:grey;
     line-height: normal;
     display: -webkit-box;

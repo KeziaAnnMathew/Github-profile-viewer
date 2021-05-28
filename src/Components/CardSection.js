@@ -3,7 +3,6 @@ import {Card} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useState,useRef, useCallback} from "react";
 import {Person} from '@material-ui/icons';
-import Users from '../Users.json';
 import useProfileSearch from './useProfileSearch';
 import './CardSection.css';
 
@@ -11,21 +10,29 @@ import './CardSection.css';
     const CardSection= (props) => {    
 
         const [pageNumber,setPageNumber] = useState(1);
+        const [sinceVal,setSinceVal]=useState(0);
 
         const {
             loading, 
             hasMore, 
             usersList, 
             error
-        } = useProfileSearch(props.term,pageNumber)   
+        } = useProfileSearch(props.term,pageNumber,sinceVal) 
         
         const observer = useRef()
         const lastDocumentRef = useCallback(
             (node) => {
-                console.log(node)
-            },
-            [],
-        )
+                if(loading) return;
+            if(observer.current) observer.current.disconnect();
+            observer.current =  new IntersectionObserver(entries =>{
+                if(entries[0].isIntersecting && hasMore){
+                    setSinceVal(usersList[usersList.length-1].id)
+                    setPageNumber(prevPageNumber => prevPageNumber + 1)
+                    
+                }
+            })
+            if(node) observer.current.observe(node)
+        },[loading,hasMore])
 
 
         return(
@@ -34,8 +41,9 @@ import './CardSection.css';
                         <div className="card-container">
                             {usersList.map((item,index)=>{
                                 if(usersList.length == index+1){
-                                    <Card className="card" style={{ width: '19rem', height:'9rem' }}  ref={lastDocumentRef} key={item.login}>
-                                    {/* <Link to={`/${item.id}`} style={{ textDecoration: 'none' }}> */}
+                                    return(
+                                        <Card className="card" style={{ width: '19rem', height:'9rem' }}  ref={lastDocumentRef} key={item.login}>
+                                    <Link to={`/${item.login}`} style={{ textDecoration: 'none' }}>
                                         <Card.Body className="card-body">
                                             <div className="user-img">
                                                 <p className="person-icon"><Person /></p>
@@ -43,33 +51,34 @@ import './CardSection.css';
                                             <div className="user-details">
                                             <Card.Title>{item.login}</Card.Title>
                                             <Card.Text className="text">
-                                                @{item.login}, work at ,
+                                                @{item.login}, work at,
+                                            </Card.Text>
+                                            </div>
+                                        </Card.Body> 
+                                    </Link>
+                                        </Card>
+                                    )
+                                }
+                                else{
+                                    return(
+                                        <Card className="card" style={{ width: '19rem', height:'9rem' }} key={item.login}>
+                                    <Link to={`/${item.login}`} style={{ textDecoration: 'none' }}>
+                                        <Card.Body className="card-body">
+                                            <div className="user-image">
+                                                <img src={item.avatar_url} alt="profile" />
+                                            </div>
+                                            <div className="user-details">
+                                            <Card.Title>{item.login}</Card.Title>
+                                            <Card.Text className="textdet">
+                                                @{item.login}, work at  ,
                                                 bio 
                                             </Card.Text>
                                             </div>
                                         </Card.Body> 
-                                    {/* </Link> */}
-                                    </Card>
+                                    </Link>
+                                        </Card>
+                                    )
                                 }
-                                // else{
-                                //     <Card className="card" style={{ width: '19rem', height:'9rem' }} key={item.login}>
-                                // {/* <Link to={`/${item.id}`} style={{ textDecoration: 'none' }}> */}
-                                //     <Card.Body className="card-body">
-                                //         <div className="user-img">
-                                //             <p className="person-icon"><Person /></p>
-                                //         </div>
-                                //         <div className="user-details">
-                                //         <Card.Title>{item.login}</Card.Title>
-                                //         <Card.Text className="text">
-                                //             @{item.login}, work at ,
-                                //             bio 
-                                //         </Card.Text>
-                                //         </div>
-                                //     </Card.Body> 
-                                // {/* </Link> */}
-                                //     </Card>
-                                // }
-                            
                             })}                               
                         </div>
                         <div>{loading && 'Loading...'}</div>
