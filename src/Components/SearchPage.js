@@ -6,13 +6,12 @@ import './SearchPage.css'
 
 function SearchPage(){
     const [searchTerm,setSearchTerm] = useState('');
-    const [pageNUmber,setPageNumber] = useState(1);
+    // const [pageNUmber,setPageNumber] = useState(1);
 
 
 
 function handleSearch(e){
     setSearchTerm(e.target.value);
-    setPageNumber(1)
 }
 
     return(
@@ -27,7 +26,6 @@ function handleSearch(e){
             </div>
             <CardSection 
             term={searchTerm}
-            pageNumber={pageNUmber}
             />
         </div>
     )

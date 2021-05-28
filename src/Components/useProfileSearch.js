@@ -25,6 +25,7 @@ export default function useProfileSearch(query,pageNumber) {
                 setUsersList(prevList =>{
                     return [...new Set([...prevList,...res.data.map(el=>el)])]
                })
+               console.log(res.data)
                setHasMore(res.data.length > 0)
                setLoading(false);
             }).catch(e =>{
@@ -42,6 +43,7 @@ export default function useProfileSearch(query,pageNumber) {
                 setUsersList(prevList =>{
                     return [...new Set([...prevList,...res.data.items.map(el=>el)])]
                })
+               console.log(res.data.items)
                setHasMore(res.data.items.length > 0)
                setLoading(false);
             }).catch(e =>{
