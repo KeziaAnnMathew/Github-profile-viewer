@@ -88,6 +88,10 @@
 .text{
     color:grey;
     line-height: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
 }
 @media only screen and (max-width: 400px) {
     .credentials{
